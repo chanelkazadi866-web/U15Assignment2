@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="style.css"> 
+        <script src="scripts/javascript.js"></script>
+        <title>DriveSpace</title>
+    </head>
+    <body>
+        <header>
+        <div class="navbar">
+        <h1>DriveSpace</h1>
+      
+
+    </div>
+
+        
+
+        <nav class="navbar">
+            <ul> 
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vehicle catalogue.html">Vehicle catalogue</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+        </header>
+
+        <main>
+           
+
+            <h2>Customise Your Car</h2>
+
+<!-- Car selector -->
+<label>Select a car:</label>
+<select id="carSelect">
+    <option value="mini">2017 MINI Cooper</option>
+    <option value="jeep">2018 Jeep Wrangler</option>
+    <option value="golf">2017 VW Golf GTI</option>
+    <option value="design4">2021 Porsche Cayman GTS</option>
+</select>
+
+<br><br>
+
+<!-- Colour selector -->
+<label>Select a colour:</label>
+<select id="colourSelect">
+    <option value="red">Red</option>
+    <option value="blue">Blue</option>
+    <option value="black">Black</option>
+</select>
+
+<br><br>
+
+<!-- Car image -->
+<img id="carImage" src="mini-red.png" class="vehicle-img">
+
+<!-- Car info -->
+<div id="carInfo">
+    <h3 id="carName">2017 MINI Cooper</h3>
+    <p id="carDesc">Used • Excellent Condition</p>
+    <span id="carPrice">£20,995</span>
+</div>
+
+<script>
+const carData = {
+    mini: {
+        name: "2017 MINI Cooper",
+        desc: "Used • Excellent Condition",
+        price: "£20,995",
+        colours: {
+            red: "mini-red.png",
+            blue: "mini-blue.png",
+            black: "mini-black.png"
+        }
+    },
+
+    jeep: {
+        name: "2018 Jeep Wrangler",
+        desc: "Used • Great Condition",
+        price: "£35,995",
+        colours: {
+            red: "jeep-red.png",
+            blue: "jeep-blue.png",
+            black: "jeep-black.png"
+        }
+    },
+
+    golf: {
+        name: "2017 VW Golf GTI",
+        desc: "Used • Good Condition",
+        price: "£18,995",
+        colours: {
+            red: "golf-red.png",
+            blue: "golf-blue.png",
+            black: "golf-black.png"
+        }
+    },
+
+    design4: {
+        name: "2021 Porsche Cayman GTS",
+        desc: "High‑performance • Excellent Condition",
+        price: "£56,684",
+        colours: {
+            red: "design4-red.png",
+            blue: "design4-blue.png",
+            black: "design4-black.png"
+        }
+    }
+};
+
+const carSelect = document.getElementById("carSelect");
+const colourSelect = document.getElementById("colourSelect");
+const carImage = document.getElementById("carImage");
+const carName = document.getElementById("carName");
+const carDesc = document.getElementById("carDesc");
+const carPrice = document.getElementById("carPrice");
+
+function updateCar() {
+    const car = carSelect.value;
+    const colour = colourSelect.value;
+
+    carName.textContent = carData[car].name;
+    carDesc.textContent = carData[car].desc;
+    carPrice.textContent = carData[car].price;
+
+    carImage.src = carData[car].colours[colour];
+}
+
+carSelect.addEventListener("change", updateCar);
+colourSelect.addEventListener("change", updateCar);
+</script>
+
+            
+            
+           

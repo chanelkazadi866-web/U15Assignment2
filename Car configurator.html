@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="style.css"> 
+        <script src="scripts/javascript.js"></script>
+        <title>DriveSpace</title>
+    </head>
+    <body>
+        <header>
+        <div class="navbar">
+        <h1>DriveSpace</h1>
+      
+
+    </div>
+
+        
+
+        <nav class="navbar">
+            <ul> 
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vehicle catalogue.html">Vehicle catalogue</a></li>
+                <li><a href="Car configurator.html">Car Configurator</a></li>
+                <li><a href="Book a test drive.html">Book a Test Drive</a></li>
+                <li><a href="Finance Calculator.html">Finance Calculator</a></li>
+            </ul>
+        </nav>
+        </header>
+
+        <main>
+           
+   
+
+
+<label>Select a car:</label>
+<select id="carSelect">
+    <option value="design1">XC60 Core</option>
+    <option value="design2">XC60 Plus</option>
+    <option value="design3">ES90 ULTRA</option>
+    <option value="design4">EX30 Plus</option>
+</select>
+
+<br><br>
+
+<label>Select a colour:</label>
+<select id="colourSelect"></select>
+
+<br><br>
+
+<img id="carImage" src="Design1.avif" class="vehicle-img">
+
+<div id="carInfo">
+    <h3 id="carName">XC60 Core</h3>
+    <p id="carDesc">
+        Elegant and stylish design<br>
+        Comfortable and spacious interior<br>
+        Advanced safety features<br>
+        Efficient engine options
+    </p>
+    <span id="carPrice">£20,995</span>
+</div>
+
+<script>
+const carData = {
+    design1: {
+        name: "XC60 Core",
+        desc: "Elegant and stylish design\nComfortable and spacious interior\nAdvanced safety features for a secure driving experience\nEfficient engine options for great fuel economy",
+        price: "£20,995",
+        colours: {
+            grey: "Design2.avif",
+            black: "Design1.avif"
+        }
+    },
+
+    design2: {
+        name: "XC60 Plus",
+        desc: "Smooth and comfortable ride\nSpacious interior with premium materials\nAdvanced safety features for peace of mind\nPowerful engine options for an exhilarating driving experience",
+        price: "£35,995",
+        colours: {
+            grey: "Design2.avif",
+            black: "Design1.avif"
+        }
+    },
+
+    design3: {
+        name: "ES90 ULTRA",
+        desc: "Modern and futuristic design\nLuxurious interior with advanced technology\nExcellent safety features\nPowerful performance with a smooth ride",
+        price: "£18,995",
+        colours: {
+            grey: "Design333.avif",
+            black: "Design3.avif"
+        }
+    },
+
+    design4: {
+        name: "EX30 Plus",
+        desc: "Great for city driving\nHigh performance\nHeated seats\nAdvanced safety features",
+        price: "£29,995",
+        colours: {
+            grey: "Design4.avif",
+            black: "Design444.avif"
+        }
+    }
+};
+
+const carSelect = document.getElementById("carSelect");
+const colourSelect = document.getElementById("colourSelect");
+const carImage = document.getElementById("carImage");
+const carName = document.getElementById("carName");
+const carDesc = document.getElementById("carDesc");
+const carPrice = document.getElementById("carPrice");
+
+function updateColours(car) {
+    colourSelect.innerHTML = "";
+    const colours = carData[car].colours;
+
+    for (let colour in colours) {
+        const option = document.createElement("option");
+        option.value = colour;
+        option.textContent = colour.charAt(0).toUpperCase() + colour.slice(1);
+        colourSelect.appendChild(option);
+    }
+}
+
+function updateCar() {
+    const car = carSelect.value;
+    const colour = colourSelect.value;
+
+    carName.textContent = carData[car].name;
+    carDesc.textContent = carData[car].desc;
+    carPrice.textContent = carData[car].price;
+
+    carImage.src = carData[car].colours[colour];
+}
+
+carSelect.addEventListener("change", () => {
+    updateColours(carSelect.value);
+    updateCar();
+});
+
+colourSelect.addEventListener("change", updateCar);
+
+// Load default colours on page load
+updateColours("design1");
+</script>
+
+

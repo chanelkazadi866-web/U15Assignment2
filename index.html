@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="style.css"> 
+        <script src="scripts/javascript.js"></script>
+        <title>DriveSpace</title>
+    </head>
+    <body>
+        <header>
+        <div class="navbar">
+        <h1>DriveSpace</h1>
+       
+
+    </div>
+
+        
+
+        <nav class="navbar">
+            <ul> 
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vehicle catalogue.html">Vehicle catalogue</a></li>
+                <li><a href="Car configurator.html">Car Configurator</a></li>
+                <li><a href="Book a test drive.html">Book a Test Drive</a></li>
+                <li><a href="Finance Calculator.html">Finance Calculator</a></li>
+            </ul>
+        </nav>
+        </header>
+        
+        <div class="left-section">
+    <h2>Volvo EC40</h2>
+    <h3>BRAND NEW CAR</h3>
+    <p>READ MORE</p>
+</div>
+
+
+    <div class="slider-wrapper">
+    <div class="car-slider">
+    <img src="Carr1.jpg" class="car-image active">
+    <img src="Carr2.jpg" class="car-image">
+    <img src="Carr3.jpg" class="car-image">
+
+    <button class="arrow left" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="arrow right" onclick="changeSlide(1)">&#10095;</button>
+</div>
+
+   <button class="price-btn" onclick="togglePrice()">Check Price</button>
+    <p id="car-price" class="hidden">£42,000</p>
+
+</div>
+
+<script>
+function togglePrice() {
+    const price = document.getElementById("car-price");
+    price.classList.toggle("hidden");
+}
+</script>
+
+
+
+        
+
+<main>
+
+   
+    
+
+
+
+    
+
+   
+</main>
+
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll('.car-image');
+
+function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slideIndex = (n + slides.length) % slides.length;
+    slides[slideIndex].classList.add('active');
+}
+
+function changeSlide(n) {
+    showSlide(slideIndex + n);
+}
+
+showSlide(slideIndex);
+</script>
+ 
+     
